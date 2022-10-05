@@ -42,7 +42,7 @@ jobs:
         run: git add package-lock.json package.json
       
       - name: 'Commit'
-        run: git add package-lock.json package.json
+        run: git commit -m "update protos automatically"
         
       - name: 'Push'
         run: git push origin update-protos --set-upstream --force
