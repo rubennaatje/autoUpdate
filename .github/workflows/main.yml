@@ -40,6 +40,9 @@ jobs:
 
       - name: 'Add package.json & package-lock.json'
         run: git add package-lock.json package.json
-        
+      
       - name: 'Commit'
+        run: git add package-lock.json package.json
+        
+      - name: 'Push'
         run: git push origin update-protos --set-upstream --force
