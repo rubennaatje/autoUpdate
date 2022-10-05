@@ -31,13 +31,16 @@ jobs:
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository: rubennaatje/dependent
-
+  
       - name: 'update package'
         run:  npx npm-check-updates @ruben/autoUpdate -u
 
       - name: 'install packages'
         run:  npm install
-
+      - name: 'Git things'
+        run: |
+          git config --global user.email "protoupdater@github.com"
+          git config --global user.name "proto updater"
       - name: 'Add package.json & package-lock.json'
         run: git add package-lock.json package.json
       
