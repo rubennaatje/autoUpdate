@@ -39,7 +39,7 @@ jobs:
         run:  npm install
 
       - name: Create Pull Request
-        uses: rubennaatje/create-pull-request@main
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: update changelog
           title: Update Changelog
