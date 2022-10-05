@@ -25,6 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
+          token: ${{ secrets.ACCESS_TOKEN }}
           repository: rubennaatje/dependent
 
       - name: 'update package'
