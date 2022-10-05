@@ -22,7 +22,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: xd
+      - name: add ssh key
         run: |
           eval `ssh-agent -s`
           ssh-add - <<< '${{ secrets.DEPLOY_KEY }}'
@@ -38,12 +38,8 @@ jobs:
       - name: 'install packages'
         run:  npm install
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: update changelog
-          title: Update Changelog
-          body: Update changelog to reflect release changes
-          branch: update-changelog
-          base: main
-          token: ${{ secrets.PAT }}
+      - name: 'Add package.json & package-lock.json'
+        run: git add package-lock.json package.json
+        
+      - name: 'Commit'
+        run: git push origin update-protos --set-upstream --force
