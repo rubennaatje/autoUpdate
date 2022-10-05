@@ -31,7 +31,9 @@ jobs:
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           repository: rubennaatje/dependent
-  
+      - name: Set branch
+        run: git switch -c update-protos 
+        
       - name: 'update package'
         run:  npx npm-check-updates @ruben/autoUpdate -u
 
